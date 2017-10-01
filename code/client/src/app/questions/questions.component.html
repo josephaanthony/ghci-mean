@@ -1,0 +1,26 @@
+<div class="container-fluid">
+	<div class="row" *ngFor="let question of questions">
+		<div class="col-md-2">
+			{{question._id}}
+		</div>
+		<div class="col-md-2">
+			{{question.desc}}
+		</div>
+		<div class="col-md-2">
+			{{question.optionType}}
+		</div>
+		<div class="col-md-6 container-fluid">
+			<div class="option-row" *ngFor="let option of question.options">
+				<div class="col-md-6">
+					{{option._id}}
+				</div>
+				<div class="col-md-3">
+					{{option.desc}}
+				</div>
+				<div class="col-md-3">
+					{{option.isCorrect}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -2,27 +2,50 @@ const mongoose = require('mongoose');
 
 const OptionSchema = mongoose.Schema( {
     desc: {
-        type: String
+        type: String,
+        required: true
     },
     isCorrect: {
-        type: Boolean
+        type: Boolean,
+        required: true
     }
 })
 const Option = module.exports = mongoose.model('Option', OptionSchema);
 
 const QuestionSchema = mongoose.Schema({
     desc: {
-        type: String
+        type: String,
+        required: true
     },
     optionType: {
-        type: String
+        type: String,
+        required: true,
+        enum: ['Radio', 'Checkbox']
     },
     options: {
-        type: [OptionSchema]
+        type: [OptionSchema],
+        required: true
     },
 });
-
 const Question = module.exports = mongoose.model('Question', QuestionSchema);
+
+const QuizSchema = mongoose.Schema({
+    desc: {
+        type: String,
+        required: true
+    },
+    level: {
+        type: Number,
+        required: true
+    },
+    timeoutInterval: {
+        type: Number,
+        required: true
+    },
+    questions: [QuestionSchema]
+})
+const Quiz = module.exports = mongoose.model('Quiz', QuizSchema);
+
 
 
 /* 
